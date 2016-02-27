@@ -30,7 +30,7 @@ public class GeneroMusicalDaoJdbc implements GeneroMusicalDao {
         PreparedStatement preparedStatement = null;
         ResultSet resultSet = null;
         
-        String sql = "insert into generoMusical ("
+        String sql = "insert into genero_musical ("
                 + "nombre"
                 + ") "
                 + "values (?)";
@@ -76,7 +76,7 @@ public class GeneroMusicalDaoJdbc implements GeneroMusicalDao {
     @Override
     public List<GeneroMusical> findAllGenerosMusicales() {
 
-        String sql = "select * from generoMusical";
+        String sql = "select * from genero_musical";
         List<GeneroMusical> generosMusicales = new ArrayList<>();
         
         try (Connection connection = ConexionPool.getInstance().getConnection();
@@ -100,7 +100,7 @@ public class GeneroMusicalDaoJdbc implements GeneroMusicalDao {
 
     @Override
     public GeneroMusical findById(Integer id) {
-        String sql = "SELECT * FROM generoMusical"
+        String sql = "SELECT * FROM genero_musical"
                 + " WHERE id = ?";
         GeneroMusical generoMusical = new GeneroMusical();
         PreparedStatement preparedStatement = null;
@@ -136,7 +136,7 @@ public class GeneroMusicalDaoJdbc implements GeneroMusicalDao {
 
     @Override
     public GeneroMusical updateGeneroMusical(GeneroMusical generoMusical){
-        String sql = "update generoMusical set nombre = ? where id = ?";
+        String sql = "update genero_musical set nombre = ? where id = ?";
         try (Connection connection = ConexionPool.getInstance().getConnection();
                 PreparedStatement preparedStatement = connection.prepareStatement(sql);
                 ) {
@@ -157,7 +157,7 @@ public class GeneroMusicalDaoJdbc implements GeneroMusicalDao {
         Connection connection = null;
         PreparedStatement preparedStatement = null;
         
-        String sql = "delete from generoMusical where id = ?";
+        String sql = "delete from genero_musical where id = ?";
 
         try {
             connection = ConexionPool.getInstance().getConnection();

@@ -77,22 +77,23 @@ public class DiscoDaoJdbc implements DiscoDao {
             preparedStatement = connection.prepareStatement(sql,Statement.RETURN_GENERATED_KEYS);
             preparedStatement.setString(1, disco.getTitulo());
             preparedStatement.setDate(2, disco.getFechaLanzamiento());
-            preparedStatement.setInt(3, disco.getCantidadDisponible());
-            preparedStatement.setInt(4, disco.getIdioma().getId());
-            preparedStatement.setInt(5, disco.getPais().getId());
-            preparedStatement.setInt(6, disco.getDisquera().getId());
-            preparedStatement.setInt(7, disco.getGeneroMusical().getId());
+            preparedStatement.setFloat(3, disco.getPrecio());
+            preparedStatement.setInt(4, disco.getCantidadDisponible());
+            preparedStatement.setInt(5, disco.getIdioma().getId());
+            preparedStatement.setInt(6, disco.getPais().getId());
+            preparedStatement.setInt(7, disco.getDisquera().getId());
+            preparedStatement.setInt(8, disco.getGeneroMusical().getId());
             if(disco.getPromocion() != null && disco.getPromocion().getId() > 0){
-                preparedStatement.setInt(8, disco.getPromocion().getId());
+                preparedStatement.setInt(9, disco.getPromocion().getId());
             } else {
-                preparedStatement.setNull(8, java.sql.Types.NULL);
+                preparedStatement.setNull(9, java.sql.Types.NULL);
             }
-            preparedStatement.setInt(9, disco.getIva().getId());
+            preparedStatement.setInt(10, disco.getIva().getId());
             //preparedStatement.setNull(1, java.sql.Types.NULL);
             if(disco.getRutaImagen()!= null && disco.getRutaImagen().length() > 0){
-                preparedStatement.setString(10, disco.getRutaImagen());
+                preparedStatement.setString(11, disco.getRutaImagen());
             } else {
-                preparedStatement.setNull(10, java.sql.Types.NULL);
+                preparedStatement.setNull(11, java.sql.Types.NULL);
             }
             
             preparedStatement.execute();
