@@ -10,6 +10,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ResourceBundle;
 import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
@@ -31,7 +32,7 @@ public class ConexionPool {
         try {
             InitialContext initialContext = new InitialContext();
             Context envContext = (Context) initialContext.lookup("java:comp/env");
-            ds = (DataSource) envContext.lookup("jdbc/pixupweb");
+            ds = (DataSource) envContext.lookup(ResourceBundle.getBundle("pixupdao").getString("pixup.pool.resource"));
         } catch (NamingException nex) {
             System.out.println("No se pudo abrir"
                     + " la base de datos" + nex.getMessage());
