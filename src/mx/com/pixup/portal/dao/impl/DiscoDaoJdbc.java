@@ -257,7 +257,7 @@ public class DiscoDaoJdbc implements DiscoDao {
                 + " JOIN genero_musical ON genero_musical.id = disco.id_genero_musical"
                 + " LEFT JOIN promocion ON promocion.id = disco.id_promocion"
                 + " JOIN iva ON iva.id = disco.id_iva"
-                + " WHERE id = ?";
+                + " WHERE disco.id = ?";
         Disco disco = new Disco();
         PreparedStatement preparedStatement = null;
         ResultSet resultSet = null;
@@ -366,15 +366,15 @@ public class DiscoDaoJdbc implements DiscoDao {
     @Override
     public Disco updateDisco(Disco disco){
         String sql = "update disco set "
-                + "titulo = ? "
-                + "fecha_lanzamiento = ? "
-                + "cantidad_disponible = ? "
-                + "id_idioma = ? "
-                + "id_pais = ? "
-                + "id_disquera = ? "
-                + "id_genero_musical = ? "
-                + "id_promocion = ? "
-                + "id_iva = ? "
+                + "titulo = ?, "
+                + "fecha_lanzamiento = ?, "
+                + "cantidad_disponible = ?, "
+                + "id_idioma = ?, "
+                + "id_pais = ?, "
+                + "id_disquera = ?, "
+                + "id_genero_musical = ?, "
+                + "id_promocion = ?, "
+                + "id_iva = ?, "
                 + "ruta_imagen = ? "
                 + "where id = ?";
         try (Connection connection = ConexionPool.getInstance().getConnection();
